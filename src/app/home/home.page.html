@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Crud
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label position="stacked">Datos elementos</ion-label>
+    <ion-input placeholder="Nombre" #nombre></ion-input>
+    <ion-input placeholder="Descripcion" #descripcion></ion-input>
+    <ion-input placeholder="Estado" #estado></ion-input>
+    <ion-button color="primary" expand="block" (click)="anadir_elemento_home(nombre, descripcion, estado)">Añadir a la lista</ion-button>
+  </ion-item>
+
+  <ion-list>
+    <ion-item *ngFor="let elemento of elementos">
+      <ion-label>{{elemento.nombre}}</ion-label>
+      <ion-label>{{elemento.descripcion}}</ion-label>
+      <ion-label>{{elemento.estado}}</ion-label>
+      <ion-button color="danger" expand="block" (click)="eliminar_elemento_home(elemento.id)">Eliminar</ion-button>
+    </ion-item>
+  </ion-list>
+  
+</ion-content>
