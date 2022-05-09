@@ -12,16 +12,23 @@
     <ion-input placeholder="Nombre" #nombre></ion-input>
     <ion-input placeholder="Descripcion" #descripcion></ion-input>
     <ion-input placeholder="Estado" #estado></ion-input>
-    <ion-button color="primary" expand="block" (click)="anadir_elemento_home(nombre, descripcion, estado)">Añadir a la lista</ion-button>
+    <ion-button color="primary" expand="block" (click)="anadir_elemento_home(nombre, descripcion, estado)">Añadir a la
+      lista</ion-button>
   </ion-item>
 
   <ion-list>
+    <ion-label> Nombre </ion-label>
+    <ion-label> Descripcion </ion-label>
+    <ion-label> Estado </ion-label>
     <ion-item *ngFor="let elemento of elementos">
-      <ion-label>{{elemento.nombre}}</ion-label>
-      <ion-label>{{elemento.descripcion}}</ion-label>
-      <ion-label>{{elemento.estado}}</ion-label>
+      <ion-input>{{elemento.nombre}}</ion-input>
+      <ion-input>{{elemento.descripcion}}</ion-input>
+      <ion-input>{{elemento.estado}}</ion-input>
       <ion-button color="danger" expand="block" (click)="eliminar_elemento_home(elemento.id)">Eliminar</ion-button>
+      <ion-button color="warning"
+        (click)="modificar_elemento_home(elemento.id, elemento.nombre, elemento.descripcion, elemento.estado)">Modificar
+      </ion-button>
     </ion-item>
   </ion-list>
-  
+
 </ion-content>

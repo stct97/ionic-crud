@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Elemento } from './elemento-model';
+
 import { ElementoService } from './elemento.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +12,7 @@ export class HomePage implements OnInit {
   elementos = [];
   constructor(
     private elementoService: ElementoService,
-    private router: Router
+    private httpClient: HttpClient
   ) {}
 
   console_log(params: any) {
@@ -37,7 +37,19 @@ export class HomePage implements OnInit {
     return (this.elementos = this.elementoService.traer_todos_los_elementos());
   }
 
-  ngOnInit() {
+  modificar_elemento_home(
+    id: number,
+    nombre: string,
+    descripcion: string,
+    estado: string
+  ) {
+    console.log(id, nombre, descripcion, estado);
+    this.elementoService.modificar_elemento(id, nombre, descripcion, estado);
     return (this.elementos = this.elementoService.traer_todos_los_elementos());
+  }
+
+  ngOnInit() {
+    this.elementos = this.elementoService.traer_todos_los_elementos_api();
+    return this.elementos;
   }
 }
